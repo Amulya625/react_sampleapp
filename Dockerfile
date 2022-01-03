@@ -3,7 +3,7 @@
 # 2) nginx stage to serve frontend assets
 
 # pull the base image
-FROM node:16.13-alpine as builder
+FROM node:16.13.1-alpine as builder
 
 # set the working direction
 WORKDIR /app

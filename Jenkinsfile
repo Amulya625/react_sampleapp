@@ -1,7 +1,8 @@
 pipeline {
     environment {
-        imagename = "react-image"
+        registry = "20.29.193.150:8085/react-image"
         dockerImage = ''
+        registryCredential = 'NEXUS_ID'
     }
    agent any
    stages {
@@ -13,9 +14,17 @@ pipeline {
         stage('Building image') {
             steps{
                 script {
-                 dockerImage = docker.build imagename + ":$BUILD_NUMBER"
+                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }    
         }
+        stage('Login to Nexus Repository'){
+            steps{
+                script {
+                    sh 'docker login -u admin -p Ammu@2506 20.29.193.150:8085/react-image'     
+                    dockerImage.push()
+                }
+            }
+        }            
    }        
 }          

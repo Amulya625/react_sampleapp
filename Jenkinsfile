@@ -36,6 +36,7 @@ pipeline {
                     remote.password = "Amulya@9703006654"
                     remote.allowAnyHosts = true  
                     sshPut remote: remote, from: 'deployment.yaml', into: '.'
+                    sshCommand remote: remote,command: "kubectl apply -f deployment.yaml"
                 }
             }
         }                     

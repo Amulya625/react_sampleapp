@@ -1,5 +1,6 @@
 pipeline {
     environment {
+        imagename = "react-image"
         dockerImage = ''
     }
    agent any
@@ -11,7 +12,7 @@ pipeline {
         }  
         stage('Building image') {
             steps{
-                 dockerImage = docker.build + ":$BUILD_NUMBER"
+                 dockerImage = docker.build imageename + ":$BUILD_NUMBER"
                 }
         }
    }        

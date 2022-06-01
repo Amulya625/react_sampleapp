@@ -35,6 +35,7 @@ pipeline {
                     remote.user = "azureuser"
                     remote.password = "Amulya@9703006654"
                     remote.allowAnyHosts = true  
+                    sshPut remote: remote, from: 'deployment.yaml', into: '.'
                 }
             }
         }                     

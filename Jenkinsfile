@@ -25,6 +25,18 @@ pipeline {
                     dockerImage.push()
                 }
             }
-        }            
+        } 
+        stage('Deploy using SSH steps') {
+            steps {
+                script {
+                    def remote = [:]
+                    remote.name = "minikube"
+                    remote.host = "20.118.166.214"
+                    remote.user = "azureuser"
+                    remote.password = "Amulya@9703006654"
+                    remote.allowAnyHosts = true  
+                }
+            }
+        }                     
    }        
 }          
